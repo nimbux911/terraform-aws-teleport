@@ -64,3 +64,15 @@ resource "aws_instance" "cluster" {
     Name = "${var.environment}-teleport"
   }
 }
+
+resource "aws_eip" "lb" {
+  instance = aws_instance.cluster.id
+    tags = {
+    Name = "${var.environment}-teleport"
+  }
+}
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.cluster.id
+  allocation_id = aws_eip.lb.id
+}
