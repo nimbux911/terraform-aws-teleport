@@ -65,7 +65,7 @@ resource "aws_instance" "cluster" {
   }
 }
 
-resource "aws_eip" "lb" {
+resource "aws_eip" "cluster_eip" {
   instance = aws_instance.cluster.id
     tags = {
     Name = "${var.environment}-teleport"
