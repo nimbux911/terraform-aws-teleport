@@ -74,5 +74,5 @@ resource "aws_eip" "cluster_eip" {
 
 resource "aws_eip_association" "eip_assoc" {
   instance_id   = aws_instance.cluster.id
-  allocation_id = aws_eip.lb.id
+  allocation_id = aws_eip.cluster_eip.id
 }
